@@ -1,7 +1,6 @@
 <div *ngIf="cart$ | async as c">
-    {{ c.cartId }} - {{ c.title }}
+    {{ c.cartId }} - {{ c.title }} : {{ c.comments }}
     <ul>
-        {{ c.comments }}
         <br>
         <li *ngFor="let item of c.items">
             {{ item.item }} - {{ item.quantity }}

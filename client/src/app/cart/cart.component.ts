@@ -22,6 +22,7 @@ export class CartComponent implements OnInit, LeaveComponent {
     itemArr!: FormArray
 
     ngOnInit(): void {
+        // Better to use canActivate + routerGuard instead of this
         // if (!this.cartService.hasLogin()) {
         //     this.router.navigate(['/'])
         // }
@@ -68,7 +69,7 @@ export class CartComponent implements OnInit, LeaveComponent {
     }
 
     getMessage(): string {
-        return "Specific message for cart component, can customise for each component"
+        return "Are you sure you want to leave? (Specific message for cart component, can customise for each component)"
     }
 
     private createItem(): FormGroup {
