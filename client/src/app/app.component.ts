@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,22 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    @Input()
-    username = ''
+    username!: string
+
+    router = inject(Router)
+    cartService = inject(CartService)
+    
+    constructor(private element: ElementRef) {
+    }
 
     ngOnInit(): void {
-        
+        console.info('elementRef: ' + this.element.nativeElement.getAttribute('username'))
+        this.username = this.element.nativeElement.getAttribute('username')
+
+        if (!!this.username) {
+            this.cartService.username = this.username
+            this.router.navigate(['/list'])
+        }
     }
+    
 }

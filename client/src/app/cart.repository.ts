@@ -21,15 +21,13 @@ export class CartDatabase extends Dexie {
         return this.carts.add(cart)
     }
 
-    getCart(): Promise<Cart[]> {
+    getCarts(): Promise<Cart[]> {
         return this.carts.toArray()
     }
 
     getCartById(cartId: string): Promise<Cart | null> {
-        return this.carts.where('cartId').equals(cartId).toArray().then(
-            result => {
-                return result.length > 0 ? result[0] : null
-            }
-        )
+        return this.carts.where('cartId').equals(cartId).toArray().then(result => {
+            return result.length > 0 ? result[0] : null
+        })
     }
 }

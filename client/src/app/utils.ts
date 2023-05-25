@@ -1,7 +1,6 @@
 import { inject } from "@angular/core";
 import { CanActivateFn, CanDeactivateFn, Router } from "@angular/router";
 import { CartService } from "./cart.service";
-import { CartComponent } from "./cart/cart.component";
 
 export interface LeaveComponent {
     canExit() : boolean

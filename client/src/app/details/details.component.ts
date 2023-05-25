@@ -20,7 +20,6 @@ export class DetailsComponent implements OnInit {
 
     ngOnInit(): void {
         // const cartId = this.activatedRoute.snapshot.params['cartId']
-
         this.cart$ = this.cartService.getCartById(this.cartId)
     }
 }

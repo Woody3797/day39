@@ -20,7 +20,7 @@ export class CartService {
     }
 
     getCarts(): Promise<Cart[]> {
-        return this.cartRepo.getCart()
+        return this.cartRepo.getCarts()
     }
 
     getCartById(cartId: string) {
