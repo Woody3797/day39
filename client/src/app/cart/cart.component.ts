@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cart } from '../model';
+import { LeaveComponent } from '../utils';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, LeaveComponent {
 
     title = inject(Title)
     cartService = inject(CartService)
@@ -21,9 +22,9 @@ export class CartComponent implements OnInit {
     itemArr!: FormArray
 
     ngOnInit(): void {
-        if (!this.cartService.hasLogin()) {
-            this.router.navigate(['/'])
-        }
+        // if (!this.cartService.hasLogin()) {
+        //     this.router.navigate(['/'])
+        // }
         this.title.setTitle('Welcome ' + this.cartService.username)
         this.form = this.createForm()
     }
@@ -45,6 +46,7 @@ export class CartComponent implements OnInit {
             result => {
                 console.info(result)
                 this.createForm()
+                this.router.navigate(['/list'])
             }
         )
     }
@@ -59,6 +61,14 @@ export class CartComponent implements OnInit {
 
     invalid() {
         return this.form.invalid || this.itemArr.length <= 0
+    }
+
+    canExit(): boolean {
+        return !this.form.dirty
+    }
+
+    getMessage(): string {
+        return "Specific message for cart component, can customise for each component"
     }
 
     private createItem(): FormGroup {

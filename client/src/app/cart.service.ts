@@ -18,4 +18,12 @@ export class CartService {
         cart.cartId = uuidv4().substring(0, 8)
         return this.cartRepo.saveCart(cart)
     }
+
+    getCarts(): Promise<Cart[]> {
+        return this.cartRepo.getCart()
+    }
+
+    getCartById(cartId: string) {
+        return this.cartRepo.getCartById(cartId)
+    }
 }

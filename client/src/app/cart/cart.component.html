@@ -1,4 +1,4 @@
-<h2>Cart</h2>
+<h2 [routerLink]="['/']">Cart</h2>
 
 <form [formGroup]="form" (submit)="saveCart()">
     <table>
@@ -54,7 +54,7 @@
     </div>
 </form>
 
-<button [routerLink]="['/']">Back</button>
+<button [routerLink]="['/list']">Back</button>
 
 <ng-template #emptyCart>
     <h2>Cart is empty!</h2>

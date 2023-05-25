@@ -1,0 +1,8 @@
+<h2 [routerLink]="['/']">Carts</h2>
+
+<div *ngFor="let c of carts$ | async" [routerLink]="['/cart', c.cartId]">
+    <h4> {{ c.title }} - {{ c.items.length }} </h4>
+</div>
+
+<button [routerLink]="['/cart']">Create Cart</button>
+

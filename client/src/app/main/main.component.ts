@@ -27,6 +27,6 @@ export class MainComponent implements OnInit {
         const username = this.form.get('username')?.value
         console.info(username)
         this.cartService.username = username
-        this.router.navigate(['/cart'])
+        this.router.navigate(['/list'])
     }
 }
