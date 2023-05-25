@@ -1,0 +1,19 @@
+<h2>Main</h2>
+
+<form [formGroup]="form" (submit)="login()">
+    <table>
+        <tr>
+            <td>Username: </td>
+            <td>
+                <input type="text" formControlName="username">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" [disabled]="form.invalid">Login</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
